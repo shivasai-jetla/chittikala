@@ -1,0 +1,4 @@
+html { scroll-behavior:smooth; }
+body { margin:0; background:#fffaf4; color:#4a333c; font-family:'DM Sans',Arial,sans-serif; -webkit-font-smoothing:antialiased; }
+body, button, input { -webkit-tap-highlight-color:transparent; }
+::selection { background:#e5bfd0; color:#5f173c; }

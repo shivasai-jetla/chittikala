@@ -1,0 +1,9 @@
+{
+  "name": "ChittiKala — Ladies Emporium",
+  "short_name": "ChittiKala",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffaf4",
+  "theme_color": "#7d214f",
+  "icons": [{"src":"favicon.svg","sizes":"any","type":"image/svg+xml"}]
+}
