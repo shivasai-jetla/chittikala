@@ -1,8 +1,8 @@
 export const STORE_CONFIG = {
   name: 'ChittiKala',
   tagline: 'Everyday elegance, beautifully yours.',
-  whatsappNumber: '919390697034',
+  whatsappNumber: '919381048769',
   currency: '₹',
   instagramUrl: 'https://www.instagram.com/',
-  location: 'Chennai, Tamil Nadu'
+  location: 'Hyderabad,  Telangana'
 } as const;
