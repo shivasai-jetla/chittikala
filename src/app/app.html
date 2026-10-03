@@ -45,7 +45,7 @@
       <div class="hero-art">
         <div class="shape shape-one"></div><div class="shape shape-two"></div>
         <div class="hero-image-card">
-          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=90" alt="Elegant Indian saree styling">
+          <img src="https://images.unsplash.com/photo-1619516388835-2b60acc4049e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNhcmVlJTIwbW9kZWx8ZW58MHx8MHx8fDA%3D" alt="Elegant Indian saree styling">
           <span class="floating-note note-top">New season<br><b>Bloom & Gold</b></span>
           <span class="floating-note note-bottom">8<br><small>handpicked looks</small></span>
         </div>
@@ -68,6 +68,8 @@
         }
       </div>
 
+      @if (productService.loading()) { <p>Loading our collection…</p> }
+      @if (productService.error()) { <p role="alert">Could not load products: {{ productService.error() }}</p> }
       <div class="product-grid">
         @for (product of filteredProducts(); track product.id) {
           <article class="product-card">

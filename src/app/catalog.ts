@@ -12,6 +12,16 @@ export const PRODUCTS: Product[] = [
     image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85'
   },
   {
+    id: 2,
+    name: 'Malli Cotton Kurti',
+    category: 'Kurtis',
+    price: 899,
+    oldPrice: 1199,
+    badge: 'New',
+    description: 'Breathable cotton with delicate everyday detailing.',
+    image: 'https://images.unsplash.com/photo-1583391733956-6c78276477e2?auto=format&fit=crop&w=900&q=85'
+  },
+  {
     id: 3,
     name: 'Temple Gold Jhumka Set',
     category: 'Jewellery',
@@ -29,6 +39,15 @@ export const PRODUCTS: Product[] = [
     badge: 'Limited',
     description: 'A feminine silhouette with a rich jewel-toned mood.',
     image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=900&q=85'
+  },
+  {
+    id: 5,
+    name: 'Kumkum Printed Saree',
+    category: 'Sarees',
+    price: 2199,
+    badge: 'Festive edit',
+    description: 'Elegant print, luminous border and an easy festive drape.',
+    image: 'https://images.unsplash.com/photo-1610189012906-9f54c5f2e5f3?auto=format&fit=crop&w=900&q=85'
   },
   {
     id: 6,

@@ -1,0 +1,18 @@
+<main class="admin"><header><a href="/">← ChittiKala store</a><h1>ChittiKala · Admin</h1>@if (loggedIn()) { <button (click)="logout()">Sign out</button> }</header>
+@if (message()) { <p role="status">{{ message() }}</p> }
+@if (!loggedIn()) {
+  <form (ngSubmit)="login()"><h2>Admin sign in</h2><label>Email<input type="email" name="email" [ngModel]="email()" (ngModelChange)="email.set($event)" required></label><label>Password<input type="password" name="password" [ngModel]="password()" (ngModelChange)="password.set($event)" required></label><button>Sign in</button></form>
+} @else {
+  <form (ngSubmit)="save()"><h2>{{ draft.id ? 'Edit product' : 'Add product' }}</h2>
+  <label>Name<input name="name" [(ngModel)]="draft.name" required></label>
+  <label>Category<select name="category" [(ngModel)]="draft.category"><option>Sarees</option><option>Kurtis</option><option>Jewellery</option><option>Dresses</option><option>Accessories</option></select></label>
+  <label>Price ₹<input name="price" type="number" min="0" [(ngModel)]="draft.price" required></label>
+  <label>Old price ₹<input name="oldPrice" type="number" min="0" [(ngModel)]="draft.oldPrice"></label>
+  <label>Badge<input name="badge" [(ngModel)]="draft.badge"></label>
+  <label>Description<textarea name="description" [(ngModel)]="draft.description"></textarea></label>
+  <label>Image URL<input name="image" [(ngModel)]="draft.image" required></label>
+  <label>Or upload image (max 5 MB)<input type="file" accept="image/*" (change)="upload($event)"></label>
+  @if (draft.image) { <img class="preview" [src]="draft.image" alt="Product preview"> }
+  <div><button [disabled]="busy()">Save product</button><button type="button" (click)="reset()">Clear</button></div></form>
+  <section><h2>Products</h2>@for (item of items(); track item.id) {<article><img [src]="item.image" [alt]="item.name"><span>{{ item.name }} · ₹{{ item.price }}</span><button (click)="edit(item)">Edit</button><button (click)="remove(item)">Delete</button></article>}</section>
+}</main>

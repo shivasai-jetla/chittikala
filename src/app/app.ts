@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal, OnInit } from '@angular/core';
 import { CartService } from './cart.service';
-import { PRODUCTS } from './catalog';
+import { ProductService } from './product.service';
 import { Category, CustomerDetails, Product } from './models';
 import { STORE_CONFIG } from './store.config';
 
@@ -10,9 +10,11 @@ import { STORE_CONFIG } from './store.config';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   readonly store = STORE_CONFIG;
-  readonly products = PRODUCTS;
+  readonly productService = inject(ProductService);
+  readonly products = this.productService.products;
+  ngOnInit(): void { void this.productService.refresh(); }
   readonly cart = inject(CartService);
   readonly categories: Category[] = ['All', 'Sarees', 'Kurtis', 'Jewellery', 'Dresses', 'Accessories'];
   readonly selectedCategory = signal<Category>('All');
@@ -30,7 +32,7 @@ export class AppComponent {
   readonly filteredProducts = computed(() => {
     const category = this.selectedCategory();
     const query = this.search().trim().toLowerCase();
-    return this.products.filter((product) => {
+    return this.products().filter((product) => {
       const matchesCategory = category === 'All' || product.category === category;
       const matchesSearch = !query || `${product.name} ${product.category} ${product.description}`.toLowerCase().includes(query);
       return matchesCategory && matchesSearch;
